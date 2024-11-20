@@ -3,7 +3,7 @@
 include '../librerias.php';
 include '../../../Model/Hraes/ReporteM/ReporteM.php';
 
-$isSchema = 'Hraes';
+$isSchema = 'public';
 $isTableName = $isSchema . '.reporte_Hraes';
 
 $reporteM = new ReporteM();

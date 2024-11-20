@@ -48,7 +48,7 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
         titulo.textContent = 'Agregar';
     }
 
-    $.post("../../../../App/Controllers/hrae/EmpleadoC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Hrae/EmpleadoC/DetallesC.php", {
         id_object: id_object
     },
         function (data) {
@@ -107,7 +107,7 @@ function agregarEditarByDb() {
     let nss = $("#nss").val();
     let id_object = $("#id_object").val();
 
-    $.post("../../../../App/Controllers/hrae/EmpleadoC/AgregarEditarC.php", {
+    $.post("../../../../App/Controllers/Hrae/EmpleadoC/AgregarEditarC.php", {
         id_object: id_object,
         nombre: nombre,
         rfc:rfc,
@@ -149,7 +149,7 @@ function eliminarEntity(id_object) {//ELIMINAR USUARIO
         cancelButtonText: "Cancelar"
       }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/hrae/EmpleadoC/EliminarC.php", {
+        $.post("../../../../App/Controllers/Hrae/EmpleadoC/EliminarC.php", {
                 id_object: id_object
             },
             function (data) {
@@ -198,7 +198,7 @@ function convertirAMayusculas(event, inputId) {
         if (result.isConfirmed) {
             fadeIn();
            
-        $.post("../../../../App/Controllers/hrae/EmpleadoC/PowerBiC.php", {
+        $.post("../../../../App/Controllers/Hrae/EmpleadoC/PowerBiC.php", {
             },
             function (data) {
                 fadeOut();

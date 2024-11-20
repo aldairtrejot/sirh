@@ -15,7 +15,7 @@ function validarPercepcion(){
 
 document.getElementById("id_cat_concepto").addEventListener("change", function() {
     let id_cat_concepto = this.value;
-    $.post("../../../../App/Controllers/Hrae/PercepcionesC/ConceptoC.php", {
+    $.post("../../../../App/Controllers/Central/PercepcionesC/ConceptoC.php", {
         id_cat_concepto: id_cat_concepto,
     },
         function (data) {
@@ -32,7 +32,7 @@ document.getElementById("id_cat_concepto").addEventListener("change", function()
 
 
 function validarConcepto(id_cat_concepto,id_tbl_empleados_hraes,id_object){
-    $.post("../../../../App/Controllers/Hrae/PercepcionesC/ValidarConceptoC.php", {
+    $.post("../../../../App/Controllers/Central/PercepcionesC/ValidarConceptoC.php", {
         id_cat_concepto: id_cat_concepto,
         id_tbl_empleados_hraes:id_tbl_empleados_hraes,
         id_object:id_object

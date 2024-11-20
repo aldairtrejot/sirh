@@ -12,7 +12,7 @@ function iniciarConfAsistencia(){
     let horario_ = document.getElementById("horario_");
     let jornada_ass = document.getElementById("jornada_ass");
 
-    $.post("../../../../App/Controllers/Hraes/AsistenciaConfC/DetallesConf.php", {
+    $.post("../../../../App/Controllers/Hrae/AsistenciaConfC/DetallesConf.php", {
         id_tbl_empleados_hraes: id_tbl_empleados_hraes
     },
         function (data) {

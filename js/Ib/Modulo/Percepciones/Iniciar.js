@@ -12,7 +12,7 @@ function buscarPercepcion(){ //BUSQUEDA
 }
 
 function iniciarTabla_pe(busqueda, paginador, id_tbl_empleados_hraes) { 
-    $.post('../../../../App/View/Hraes/Modulo/Percepciones/tabla.php', {
+    $.post('../../../../App/View/Central/Modulo/Percepciones/tabla.php', {
         busqueda: busqueda, 
         paginador: paginador, 
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
@@ -33,7 +33,7 @@ function agregarEditarPercepcion(id_object){
         $("#agregar_editar_percepcion").find("input,textarea,select").val("");
     }
 
-    $.post("../../../../App/Controllers/Hrae/PercepcionesC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Central/PercepcionesC/DetallesC.php", {
         id_object: id_object,
     },
         function (data) {
@@ -65,7 +65,7 @@ function agregarEditarByDbByPercepcion() {
     let id_cat_valores = $("#id_cat_valores").val();
     let id_object = $("#id_object").val();
 
-    $.post("../../../../App/Controllers/Hrae/PercepcionesC/AgregarEditarC.php", {
+    $.post("../../../../App/Controllers/Central/PercepcionesC/AgregarEditarC.php", {
         id_object: id_object,
         id_cat_valores: id_cat_valores,
         id_tbl_empleados_hraes:id_tbl_empleados_hraes,
@@ -97,7 +97,7 @@ function eliminarConcepto(id_object) {
         cancelButtonText: "Cancelar"
       }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/Hrae/PercepcionesC/EliminarC.php", {
+        $.post("../../../../App/Controllers/Central/PercepcionesC/EliminarC.php", {
                 id_object: id_object
             },
             function (data) {

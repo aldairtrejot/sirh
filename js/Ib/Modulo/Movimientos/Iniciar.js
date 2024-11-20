@@ -12,7 +12,7 @@ function buscarMovimiento(){ //BUSQUEDA
 }
 
 function iniciarTabla_mv(busqueda, paginador, id_tbl_empleados_hraes) { 
-    $.post('../../../../App/View/Hraes/Modulo/Movimientos/tabla.php', {
+    $.post('../../../../App/View/Central/Modulo/Movimientos/tabla.php', {
         busqueda: busqueda, 
         paginador: paginador, 
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
@@ -32,7 +32,7 @@ function agregarEditarMovimiento(id_object){
         $("#agregar_editar_movimiento").find("input,textarea,select").val("");
     }
 
-    $.post("../../../../App/Controllers/Hrae/MovimientosC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Central/MovimientosC/DetallesC.php", {
         id_object: id_object
     },
         function (data) {
@@ -85,7 +85,7 @@ function salirAgregarEditarMovimiento(){
 
 
 function guardarMovimiento() {
-    $.post("../../../../App/Controllers/Hrae/MovimientosC/AgregarEditarC.php", {
+    $.post("../../../../App/Controllers/Central/MovimientosC/AgregarEditarC.php", {
         id_tbl_movimientos: $("#id_tbl_movimientos").val(),
         fecha_movimiento: $("#fecha_movimiento").val(),
         id_tbl_control_plazas_hraes: $("#id_tbl_control_plazas_hraes").val(),
@@ -131,7 +131,7 @@ function eliminarMovimiento(id_object) {//ELIMINAR USUARIO
         cancelButtonText: "Cancelar"
       }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/Hrae/MovimientosC/EliminarC.php", {
+        $.post("../../../../App/Controllers/Central/MovimientosC/EliminarC.php", {
                 id_object: id_object
             },
             function (data) {

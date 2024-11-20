@@ -10,7 +10,7 @@ function buscarPreventivas() { //BUSQUEDA
 }
 
 function iniciarTabla_pv(busqueda, paginador, id_tbl_empleados_hraes) {
-    $.post('../../../../App/View/Hraes/Modulo/Preventivas/tabla.php', {
+    $.post('../../../../App/View/Central/Modulo/Preventivas/tabla.php', {
         busqueda: busqueda,
         paginador: paginador,
         id_tbl_empleados_hraes: id_tbl_empleados_hraes
@@ -31,7 +31,7 @@ function agregarEditarPreventiva(id_object) {
         $("#agregar_editar_preventiva").find("input,textarea,select").val("");
     }
 
-    $.post("../../../../App/Controllers/Hrae/PreventivasC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Central/PreventivasC/DetallesC.php", {
         id_object: id_object
     },
         function (data) {
@@ -64,7 +64,7 @@ function salirAgregarEditarPreventiva() {
 //accion para guardar la informacion de incidencias
 function guardarPreventiva() {
 
-    $.post("../../../../App/Controllers/Hrae/PreventivasC/AgregarEditarC.php", {
+    $.post("../../../../App/Controllers/Central/PreventivasC/AgregarEditarC.php", {
         id_tbl_empleados_hraes: id_tbl_empleados_hraes,
         fecha_inicio: $("#fecha_inicio_pv").val(),
         fecha_fin: $("#fecha_fin_pv").val(),
@@ -99,7 +99,7 @@ function eliminarIncidecia(id_object) {//ELIMINAR USUARIO
         cancelButtonText: "Cancelar"
     }).then((result) => {
         if (result.isConfirmed) {
-            $.post("../../../../App/Controllers/Hrae/PreventivasC/EliminarC.php", {
+            $.post("../../../../App/Controllers/Central/PreventivasC/EliminarC.php", {
                 id_object: id_object
             },
                 function (data) {

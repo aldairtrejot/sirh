@@ -19,7 +19,7 @@ function buscarRetardo(){ //BUSQUEDA
 }
 
 function iniciarTabla_re(busqueda, paginador, id_tbl_empleados_hraes) { 
-    $.post('../../../../App/View/Hraes/Modulo/Retardo/tabla.php', {
+    $.post('../../../../App/View/Central/Modulo/Retardo/tabla.php', {
         busqueda: busqueda, 
         paginador: paginador, 
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
@@ -40,7 +40,7 @@ function agregarEditarRetardo(id_object){
         $("#agregar_editar_retardo").find("input,textarea,select").val("");
     }
 
-    $.post("../../../../App/Controllers/Hrae/RetardoC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Central/RetardoC/DetallesC.php", {
         id_object: id_object
     },
         function (data) {
@@ -72,7 +72,7 @@ function salirAgregarEditarRetardo_(){
 
 function guardarRetardoX() {
 
-    $.post("../../../../App/Controllers/Hrae/RetardoC/AgregarEditarC.php", {
+    $.post("../../../../App/Controllers/Central/RetardoC/AgregarEditarC.php", {
         id_object: $("#id_object").val(),
         id_tbl_empleados_hraes:id_tbl_empleados_hraes,
         fecha: $("#fecha_rr").val(),
@@ -107,7 +107,7 @@ function eliminarRetardo_(id_object) {//ELIMINAR USUARIO
         cancelButtonText: "Cancelar"
       }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/Hrae/RetardoC/EliminarC.php", {
+        $.post("../../../../App/Controllers/Central/RetardoC/EliminarC.php", {
                 id_object: id_object
             },
             function (data) {
@@ -153,7 +153,7 @@ function actualizarRetardo() {//ELIMINAR USUARIO
         if (result.isConfirmed) {
         fadeIn(); 
 
-        $.post("../../../../App/Controllers/Hrae/RetardoC/ActualizarC.php", {
+        $.post("../../../../App/Controllers/Central/RetardoC/ActualizarC.php", {
             },
             function (data) {
                 console.log(data);

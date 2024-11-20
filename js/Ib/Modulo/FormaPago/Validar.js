@@ -23,7 +23,7 @@ function validarCuenta(){
 
     $.ajax({
         type: 'POST',
-        url: "../../../../App/Controllers/Hrae/FormaPagoC/ValidarClabeC.php",
+        url: "../../../../App/Controllers/Central/FormaPagoC/ValidarClabeC.php",
         data: {clabeSub:clabeSub },
         success: function (data) {
             jsonData = JSON.parse(data);
@@ -37,7 +37,7 @@ function validarCuenta(){
 }
 
 function validarEstatusCuentaC(id_object, id_cat_estatus_formato_pago) { 
-    $.post('../../../../App/Controllers/Hrae/FormaPagoC/ValidarEstatusC.php', {
+    $.post('../../../../App/Controllers/Central/FormaPagoC/ValidarEstatusC.php', {
         id_object: id_object, 
         id_cat_estatus_formato_pago: id_cat_estatus_formato_pago,
         id_tbl_empleados_hraes:id_tbl_empleados_hraes

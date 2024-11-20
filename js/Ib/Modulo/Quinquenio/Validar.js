@@ -11,7 +11,7 @@ function validarQuinquenio(){
 }
 
 function validarQuinquenio_x(id_tbl_empleados_hraes,id_object){
-    $.post("../../../../App/Controllers/Hrae/QuinquenioC/ValidarC.php", {
+    $.post("../../../../App/Controllers/Central/QuinquenioC/ValidarC.php", {
         id_tbl_empleados_hraes:id_tbl_empleados_hraes,
         id_object:id_object
     },

@@ -12,7 +12,7 @@ function buscarCapacidadesDif(){ //BUSQUEDA
 }
 
 function iniciarTabla_cf(busqueda, paginador, id_tbl_empleados_hraes) { 
-    $.post('../../../../App/View/Hraes/Modulo/CapacidadesDif/tabla.php', {
+    $.post('../../../../App/View/Central/Modulo/CapacidadesDif/tabla.php', {
         busqueda: busqueda, 
         paginador: paginador, 
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
@@ -32,7 +32,7 @@ function agregarEditarCapacidad(id_object){
         $("#agregar_editar_forma_pago").find("input,textarea,select").val("");
     }
 
-    $.post("../../../../App/Controllers/Hrae/CapacidadesDifC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Central/CapacidadesDifC/DetallesC.php", {
         id_object: id_object
     },
         function (data) {
@@ -55,7 +55,7 @@ function salirAgregarEditarCapacidad(){
 
 
 function agregarEditarByDbByCapacidad() {
-    $.post("../../../../App/Controllers/Hrae/CapacidadesDifC/AgregarEditarC.php", {
+    $.post("../../../../App/Controllers/Central/CapacidadesDifC/AgregarEditarC.php", {
         id_object: $("#id_object").val(),
         id_cat_capacidad_dif_hraes:$("#id_cat_capacidad_dif_hraes").val(),
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
@@ -87,7 +87,7 @@ function eliminarCapacidad(id_object) {//ELIMINAR USUARIO
         cancelButtonText: "Cancelar"
       }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/Hrae/CapacidadesDifC/EliminarC.php", {
+        $.post("../../../../App/Controllers/Central/CapacidadesDifC/EliminarC.php", {
                 id_object: id_object
             },
             function (data, status) {

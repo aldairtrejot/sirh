@@ -11,7 +11,7 @@ function buscarFalta() { //BUSQUEDA
 }
 
 function iniciarTabla_fa(busqueda, paginador, id_tbl_empleados_hraes) {
-    $.post('../../../../App/View/Hraes/Modulo/Falta/tabla.php', {
+    $.post('../../../../App/View/Central/Modulo/Falta/tabla.php', {
         busqueda: busqueda,
         paginador: paginador,
         id_tbl_empleados_hraes: id_tbl_empleados_hraes
@@ -33,7 +33,7 @@ function agregarEditarFalta(id_object) {
         $("#agregar_editar_falta").find("input,textarea,select").val("");
     }
 
-    $.post("../../../../App/Controllers/Hrae/FaltaC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Central/FaltaC/DetallesC.php", {
         id_object: id_object
     },
         function (data) {
@@ -95,7 +95,7 @@ function salirAgregarEditarFalta_() {
 
 function guardarFalta(es_por_retardo) {
 
-    $.post("../../../../App/Controllers/Hrae/FaltaC/AgregarEditarC.php", {
+    $.post("../../../../App/Controllers/Central/FaltaC/AgregarEditarC.php", {
         id_object: $("#id_object").val(),
         es_por_retardo: es_por_retardo,
         fecha_desde: $("#fecha_desde_").val(),
@@ -136,7 +136,7 @@ function eliminarFalta(id_object) {//ELIMINAR USUARIO
         cancelButtonText: "Cancelar"
     }).then((result) => {
         if (result.isConfirmed) {
-            $.post("../../../../App/Controllers/Hrae/FaltaC/EliminarC.php", {
+            $.post("../../../../App/Controllers/Central/FaltaC/EliminarC.php", {
                 id_object: id_object
             },
                 function (data) {

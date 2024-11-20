@@ -12,7 +12,7 @@ function iniciarConfAsistencia(){
     let horario_ = document.getElementById("horario_");
     let jornada_ass = document.getElementById("jornada_ass");
 
-    $.post("../../../../App/Controllers/Hraes/AsistenciaConfC/DetallesConf.php", {
+    $.post("../../../../App/Controllers/Central/AsistenciaConfC/DetallesConf.php", {
         id_tbl_empleados_hraes: id_tbl_empleados_hraes
     },
         function (data) {
@@ -33,7 +33,7 @@ function mostrarModalConfigAsistencia(){
 
     $("#is_modal_config_asistencia").find("input,textarea,select").val("");
 
-    $.post("../../../../App/Controllers/Hrae/AsistenciaConfC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Central/AsistenciaConfC/DetallesC.php", {
         id_tbl_empleados_hraes: id_tbl_empleados_hraes
     },
         function (data) {
@@ -77,7 +77,7 @@ function ocultarModalConfigAsistencia(){
 
 function agregarActualizarAsistencia(){
 
-    $.post("../../../../App/Controllers/Hrae/AsistenciaConfC/AgregarEditarC.php", {
+    $.post("../../../../App/Controllers/Central/AsistenciaConfC/AgregarEditarC.php", {
         id_tbl_empleados_hraes: id_tbl_empleados_hraes,
         no_dispositivo: $("#no_dispositivo_ass").val(),
         id_cat_asistencia_estatus: $("#id_cat_asistencia_estatus").val(),

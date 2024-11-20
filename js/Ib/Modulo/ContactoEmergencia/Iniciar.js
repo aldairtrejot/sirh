@@ -12,7 +12,7 @@ function buscarEmergencia(){ //BUSQUEDA
 }
 
 function iniciarTablaEmergencia(busqueda, paginador, id_tbl_empleados_hraes) { 
-    $.post('../../../../App/View/Hraes/Modulo/ContactoEmergencia/tabla.php', {
+    $.post('../../../../App/View/Central/Modulo/ContactoEmergencia/tabla.php', {
         busqueda: busqueda, 
         paginador: paginador, 
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
@@ -33,7 +33,7 @@ function agregarEditarEmergencia(id_object){
         titulo.textContent = 'Agregar';
     }
 
-    $.post("../../../../App/Controllers/Hrae/ContactoEmergenciaC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Central/ContactoEmergenciaC/DetallesC.php", {
         id_object: id_object
     },
         function (data) {
@@ -63,7 +63,7 @@ function agregarEditarByDbByEmergencia() {
     var parentesco = $("#parentesco").val();
     var id_object = $("#id_object").val();
 
-    $.post("../../../../App/Controllers/Hrae/ContactoEmergenciaC/AgregarEditarC.php", {
+    $.post("../../../../App/Controllers/Central/ContactoEmergenciaC/AgregarEditarC.php", {
         movil: movil,
         nombre: nombre,
         primer_apellido: primer_apellido,
@@ -98,7 +98,7 @@ function eliminarEmergencia(id_object) {//ELIMINAR USUARIO
         cancelButtonText: "Cancelar"
       }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/Hrae/ContactoEmergenciaC/EliminarC.php", {
+        $.post("../../../../App/Controllers/Central/ContactoEmergenciaC/EliminarC.php", {
                 id_object: id_object
             },
             function (data, status) {

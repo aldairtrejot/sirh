@@ -12,7 +12,7 @@ function buscarEspecialidad(){ //BUSQUEDA
 }
 
 function iniciarTabla_es(busqueda, paginador, id_tbl_empleados_hraes) { 
-    $.post('../../../../App/View/Hraes/Modulo/Especialidad/tabla.php', {
+    $.post('../../../../App/View/Central/Modulo/Especialidad/tabla.php', {
         busqueda: busqueda, 
         paginador: paginador, 
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
@@ -33,7 +33,7 @@ function agregarEditarEspecialidad(id_object){
         $("#agregar_editar_especialidad").find("input,textarea,select").val("");
     }
 
-    $.post("../../../../App/Controllers/Hrae/EspecialidadC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Central/EspecialidadC/DetallesC.php", {
         id_object: id_object
     },
         function (data) {
@@ -59,7 +59,7 @@ function salirAgregarEditarEspecialidad(){
 
 
 function guardarCedula() {
-    $.post("../../../../App/Controllers/Hrae/EspecialidadC/AgregarEditarC.php", {
+    $.post("../../../../App/Controllers/Central/EspecialidadC/AgregarEditarC.php", {
         id_object: $("#id_object").val(),
         cedula: $("#cedula_espec_").val(),
         id_cat_especialidad_hraes: $("#id_cat_especialidad_hraes").val(),
@@ -91,7 +91,7 @@ function eliminarEspecialidad(id_object) {//ELIMINAR USUARIO
         cancelButtonText: "Cancelar"
       }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/Hrae/EspecialidadC/EliminarC.php", {
+        $.post("../../../../App/Controllers/Central/EspecialidadC/EliminarC.php", {
                 id_object: id_object
             },
             function (data) {

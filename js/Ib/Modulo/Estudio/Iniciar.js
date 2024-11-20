@@ -12,7 +12,7 @@ function buscarEstudio(){ //BUSQUEDA
 }
 
 function iniciarTabla_ne(busqueda, paginador, id_tbl_empleados_hraes) { 
-    $.post('../../../../App/View/Hraes/Modulo/Estudio/tabla.php', {
+    $.post('../../../../App/View/Central/Modulo/Estudio/tabla.php', {
         busqueda: busqueda, 
         paginador: paginador, 
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
@@ -33,7 +33,7 @@ function agregarEditarEstudio(id_object){
         $("#agregar_editar_estudio").find("input,textarea,select").val("");
     }
 
-    $.post("../../../../App/Controllers/Hrae/EstudioC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Central/EstudioC/DetallesC.php", {
         id_object: id_object
     },
         function (data) {
@@ -66,7 +66,7 @@ function salirAgregarEstudio(){
 
 
 function guardarEstudio() {
-    $.post("../../../../App/Controllers/Hrae/EstudioC/AgregarEditarC.php", {
+    $.post("../../../../App/Controllers/Central/EstudioC/AgregarEditarC.php", {
         id_object: $("#id_object").val(),
         id_cat_carrera_hraes: $("#id_cat_carrera_hraes").val(),
         id_cat_nivel_estudios: $("#id_cat_nivel_estudios").val(),
@@ -99,7 +99,7 @@ function eliminarEstudio(id_object) {//ELIMINAR USUARIO
         cancelButtonText: "Cancelar"
       }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/Hrae/EstudioC/EliminarC.php", {
+        $.post("../../../../App/Controllers/Central/EstudioC/EliminarC.php", {
                 id_object: id_object
             },
             function (data) {

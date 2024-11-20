@@ -32,7 +32,7 @@ function agregarEditarFormaPago(id_object){
         $("#agregar_editar_forma_pago").find("input,textarea,select").val("");
     }
 
-    $.post("../../../../App/Controllers/Hraes/FormaPagoC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Hrae/FormaPagoC/DetallesC.php", {
         id_object: id_object
     },
         function (data) {

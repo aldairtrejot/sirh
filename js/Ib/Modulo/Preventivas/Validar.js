@@ -29,7 +29,7 @@ const dateInputpv = document.getElementById('fecha_inicio_pv');
 dateInputpv.addEventListener('change', function () {
     let fecha_inicio_pv = dateInputpv.value;
 
-    $.post("../../../../App/Controllers/Hrae/CatQuincenaC/CatQuincenaC.php", {
+    $.post("../../../../App/Controllers/Central/CatQuincenaC/CatQuincenaC.php", {
         isValue: fecha_inicio_pv
     },
         function (data) {

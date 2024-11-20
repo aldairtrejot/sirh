@@ -12,7 +12,7 @@ function buscarFormaPago(){ //BUSQUEDA
 }
 
 function iniciarTabla_f(busqueda, paginador, id_tbl_empleados_hraes) { 
-    $.post('../../../../App/View/Hraes/Modulo/FormaPago/tabla.php', {
+    $.post('../../../../App/View/Central/Modulo/FormaPago/tabla.php', {
         busqueda: busqueda, 
         paginador: paginador, 
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
@@ -32,7 +32,7 @@ function agregarEditarFormaPago(id_object){
         $("#agregar_editar_forma_pago").find("input,textarea,select").val("");
     }
 
-    $.post("../../../../App/Controllers/Hraes/FormaPagoC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Central/FormaPagoC/DetallesC.php", {
         id_object: id_object
     },
         function (data) {
@@ -71,7 +71,7 @@ function agregarEditarByDbByFormatoPago() {
     let id_cat_estatus_formato_pago = $("#id_cat_estatus_formato_pago").val();
     let id_cat_formato_pago = $("#id_cat_formato_pago").val();
 
-    $.post("../../../../App/Controllers/Hrae/FormaPagoC/AgregarEditarC.php", {
+    $.post("../../../../App/Controllers/Central/FormaPagoC/AgregarEditarC.php", {
         id_object: id_object,
         clabe: clabe,
         id_tbl_empleados_hraes:id_tbl_empleados_hraes,
@@ -106,7 +106,7 @@ function eliminarFormaPago(id_object) {//ELIMINAR USUARIO
         cancelButtonText: "Cancelar"
       }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/Hrae/FormaPagoC/EliminarC.php", {
+        $.post("../../../../App/Controllers/Central/FormaPagoC/EliminarC.php", {
                 id_object: id_object
             },
             function (data, status) {

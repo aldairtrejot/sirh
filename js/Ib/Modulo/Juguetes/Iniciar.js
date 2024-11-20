@@ -12,7 +12,7 @@ function buscarJuguete(){ //BUSQUEDA
 }
 
 function iniciarTabla_ju(busqueda, paginador, id_tbl_empleados_hraes) { 
-    $.post('../../../../App/View/Hraes/Modulo/Juguetes/tabla.php', {
+    $.post('../../../../App/View/Central/Modulo/Juguetes/tabla.php', {
         busqueda: busqueda, 
         paginador: paginador, 
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
@@ -35,7 +35,7 @@ function agregarEditarJuguete(id_object){
         $("#agregar_editar_juguete").find("input,textarea,select").val("");
     }
 
-    $.post("../../../../App/Controllers/Hrae/JuguetesC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Central/JuguetesC/DetallesC.php", {
         id_object: id_object,
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
     },
@@ -76,7 +76,7 @@ function agregarEditarByDbByJuguete() {
     let id_cat_estatus_juguetes = $("#id_cat_estatus_juguetes_j").val();
     let id_object = $("#id_object").val();
 
-    $.post("../../../../App/Controllers/Hrae/JuguetesC/AgregarEditarC.php", {
+    $.post("../../../../App/Controllers/Central/JuguetesC/AgregarEditarC.php", {
         id_object: id_object,
         id_ctrl_dependientes_economicos_hraes: id_ctrl_dependientes_economicos_hraes,
         id_cat_fecha_juguetes:id_cat_fecha_juguetes,
@@ -110,7 +110,7 @@ function eliminarJuguete(id_object) {
         cancelButtonText: "Cancelar"
       }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/Hrae/JuguetesC/EliminarC.php", {
+        $.post("../../../../App/Controllers/Central/JuguetesC/EliminarC.php", {
                 id_object: id_object
             },
             function (data) {

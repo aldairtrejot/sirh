@@ -29,7 +29,7 @@ function validarLicencia(){
                             
 
 function validateEstatus_(id_object,id_estatus){
-    $.post("../../../../App/Controllers/Hrae/LicenciaC/ValidarEstatusC.php", {
+    $.post("../../../../App/Controllers/Central/LicenciaC/ValidarEstatusC.php", {
         id_object:id_object,
         id_estatus: id_estatus,
         id_tbl_empleados_hraes:id_tbl_empleados_hraes

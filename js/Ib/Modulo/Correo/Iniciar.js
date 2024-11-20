@@ -12,7 +12,7 @@ function buscarCorreo(){ //BUSQUEDA
 }
 
 function iniciarTabla_ce(busqueda, paginador, id_tbl_empleados_hraes) { 
-    $.post('../../../../App/View/Hraes/Modulo/Correo/tabla.php', {
+    $.post('../../../../App/View/Central/Modulo/Correo/tabla.php', {
         busqueda: busqueda, 
         paginador: paginador, 
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
@@ -33,7 +33,7 @@ function agregarEditarCorreo(id_object){
         $("#agregar_editar_correo").find("input,textarea,select").val("");
     }
 
-    $.post("../../../../App/Controllers/Hrae/CorreoC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Central/CorreoC/DetallesC.php", {
         id_object: id_object
     },
         function (data) {
@@ -53,7 +53,7 @@ function salirAgregarEditarCorreo(){
 
 
 function guardarCorreo() {
-    $.post("../../../../App/Controllers/Hrae/CorreoC/AgregarEditarC.php", {
+    $.post("../../../../App/Controllers/Central/CorreoC/AgregarEditarC.php", {
         correo_electronico: $("#correo_electronico").val(),
         id_object: $("#id_object").val(),
         id_tbl_empleados_hraes:id_tbl_empleados_hraes,
@@ -84,7 +84,7 @@ function eliminarCorreo(id_object) {//ELIMINAR USUARIO
         cancelButtonText: "Cancelar"
       }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/Hrae/CorreoC/EliminarC.php", {
+        $.post("../../../../App/Controllers/Central/CorreoC/EliminarC.php", {
                 id_object: id_object
             },
             function (data) {

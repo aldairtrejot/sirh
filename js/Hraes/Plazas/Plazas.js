@@ -59,6 +59,7 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
         id_tbl_centro_trabajo_hraes: id_tbl_centro_trabajo_hraes
     },
         function (data) {
+            console.log(data);
             let jsonData = JSON.parse(data);//se obtiene el json
             let entity = jsonData.entity; //Se agrega a emtidad 
             let plazas = jsonData.plazas;
@@ -205,6 +206,7 @@ function eliminarEntity(id_object) {
                 id_object: id_object
             },
                 function (data) {
+                    console.log(data);
                     if (data == 'delete') {
                         notyf.success('Plaza eliminada con éxito');
                     } else {
@@ -234,6 +236,7 @@ function buscarInfoCentroTrabajo() {
             id_tbl_centro_trabajo_hraes: id_tbl_centro_trabajo_hraes,
         },
             function (data) {
+                console.log(data);
                 let jsonData = JSON.parse(data);//se obtiene el json
 
                 clvResult.textContent = jsonData.clave;
@@ -255,6 +258,7 @@ function detallesPlazaModal(id_tbl_control_plazas_hraes) {
         id_tbl_control_plazas_hraes: id_tbl_control_plazas_hraes,
     },
         function (data) {
+            console.log(data);
             let jsonData = JSON.parse(data);//se obtiene el json
             let entity = jsonData.entity;
             let empleado = jsonData.empleado;
@@ -283,6 +287,7 @@ function listarTablaHistori(id_tbl_control_plazas_hraes) {
         id_tbl_control_plazas_hraes: id_tbl_control_plazas_hraes,
     },
         function (data) {
+            console-log(data);
             $('#tabla_historia_plaza_empleado_ix').html(data);
         }
     );
