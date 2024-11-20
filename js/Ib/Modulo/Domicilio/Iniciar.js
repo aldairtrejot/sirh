@@ -5,7 +5,7 @@ function iniciarDomicilio(){
 }
 
 function domicilioDetalles(id_object){
-    $.post("../../../../App/Controllers/Hrae/DomicilioC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Central/DomicilioC/DetallesC.php", {
         id_object: id_object
     },
         function (data) {
@@ -49,7 +49,7 @@ function guardarDomicilio() {
     let num_exterior1 = $("#num_exterior1").val();
     let num_interior1 = $("#num_interior1").val();
 
-    $.post("../../../../App/Controllers/Hrae/DomicilioC/AgregarEditarC.php", {
+    $.post("../../../../App/Controllers/Central/DomicilioC/AgregarEditarC.php", {
         id_tbl_empleados_hraes: id_tbl_empleados_hraes,
         id_tbl_domicilios: id_tbl_domicilios,
         codigo_postal2: codigo_postal2,

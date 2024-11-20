@@ -49,7 +49,7 @@ function validarFecha(fechaInicio, fechaFin){
 
 function uniqueNoBiometrico(){
     let no_dispositivo_ass = document.getElementById('no_dispositivo_ass').value;
-    $.post("../../../../App/Controllers/Hrae/AsistenciaConfC/ValidarNoC.php", {
+    $.post("../../../../App/Controllers/Central/AsistenciaConfC/ValidarNoC.php", {
         id_tbl_empleados_hraes: id_tbl_empleados_hraes,
         no_dispositivo_ass: no_dispositivo_ass
     },

@@ -12,7 +12,7 @@ function buscarLicencia(){ //BUSQUEDA
 }
 
 function iniciarTabla_li(busqueda, paginador, id_tbl_empleados_hraes) { 
-    $.post('../../../../App/View/Hraes/Modulo/Licencias/tabla.php', {
+    $.post('../../../../App/View/Central/Modulo/Licencias/tabla.php', {
         busqueda: busqueda, 
         paginador: paginador, 
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
@@ -33,7 +33,7 @@ function agregarEditarLicencia(id_object){
         $("#agregar_editar_licencia").find("input,textarea,select").val("");
     }
 
-    $.post("../../../../App/Controllers/Hrae/LicenciaC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Central/LicenciaC/DetallesC.php", {
         id_object: id_object
     },
         function (data) {
@@ -76,7 +76,7 @@ function salirAgregarLicencia(){
 
 
 function guardarLicencia() {
-    $.post("../../../../App/Controllers/Hrae/LicenciaC/AgregarEditarC.php", {
+    $.post("../../../../App/Controllers/Central/LicenciaC/AgregarEditarC.php", {
         id_object: $("#id_object").val(),
         id_cat_tipo_licencia: $("#id_cat_tipo_licencia").val(),
         id_cat_tipo_dias: $("#id_cat_tipo_dias").val(),
@@ -116,7 +116,7 @@ function eliminarlicencia(id_object) {//ELIMINAR USUARIO
         cancelButtonText: "Cancelar"
       }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/Hrae/LicenciaC/EliminarC.php", {
+        $.post("../../../../App/Controllers/Central/LicenciaC/EliminarC.php", {
                 id_object: id_object
             },
             function (data) {

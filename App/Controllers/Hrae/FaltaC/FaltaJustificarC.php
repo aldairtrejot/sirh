@@ -14,7 +14,7 @@ $message = 'ok';
 
 ///VALUE
 $fileExel = 'file';
-$schema = 'Hraes';
+$schema = 'public';
 $tableName = $schema . '.ctrl_temp_asistencia';
 
 

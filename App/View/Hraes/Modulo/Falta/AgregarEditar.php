@@ -12,8 +12,7 @@
                         <div class="col-10">
                             <h1 class="text-tittle-card"><label id="titulo_falta"></label>
                                 falta.
-                            </h1>
-                            <p class="color-text-white">Área para registrar los tiempos de faltas del empleado.</p>
+                            
                         </div>
                     </div>
                 </div>

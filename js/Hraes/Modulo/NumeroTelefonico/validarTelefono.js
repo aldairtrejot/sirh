@@ -25,7 +25,7 @@ function validarTelefono(){
 }
 
 function validarEstatusTelefono(id_object, id_cat_estatus) { 
-    $.post('../../../../App/Controllers/Central/TelefonoC/ValidarEstatusC.php', {
+    $.post('../../../../App/Controllers/Hrae/TelefonoC/ValidarEstatusC.php', {
         id_object: id_object, 
         id_cat_estatus: id_cat_estatus,
         id_tbl_empleados_hraes:id_tbl_empleados_hraes

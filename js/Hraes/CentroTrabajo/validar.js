@@ -32,7 +32,7 @@ function validarCentro() {
 }
 
 function validarInfo(codigo_postal, clave_centro_trabajo) {
-    $.post("../../../../App/Controllers/Hraes/CentroTrabajoC/ValidateC.php", {
+    $.post("../../../../App/Controllers/Hrae/CentroTrabajoC/ValidateC.php", {
         codigo_postal: codigo_postal,
         clave_centro_trabajo: clave_centro_trabajo,
 

@@ -5,7 +5,7 @@ function buscarQuinquenio(){
 }
 
 function iniciarTabla_qu(id_tbl_empleados_hraes) { 
-    $.post('../../../../App/View/Hraes/Modulo/Quinquenio/tabla.php', {
+    $.post('../../../../App/View/Central/Modulo/Quinquenio/tabla.php', {
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
     },
         function (data) {
@@ -24,7 +24,7 @@ function agregarEditarQuinquenio(id_object){
         $("#agregar_editar_quinquenio").find("input,textarea,select").val("");
     }
 
-    $.post("../../../../App/Controllers/Hrae/QuinquenioC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Central/QuinquenioC/DetallesC.php", {
         id_object: id_object,
     },
         function (data) {
@@ -51,7 +51,7 @@ function salirAgregarEditarQuinquenio(){
 
 function agregarEditarByDbByQuinquenio() {
 
-    $.post("../../../../App/Controllers/Hrae/QuinquenioC/AgregarEditarC.php", {
+    $.post("../../../../App/Controllers/Central/QuinquenioC/AgregarEditarC.php", {
         id_object: $("#id_object").val(),
         id_cat_quinquenio: $("#id_cat_quinquenio").val(),
         //fecha_registro: $("#fecha_registro").val(),
@@ -83,7 +83,7 @@ function eliminarQuinquenio(id_object) {
         cancelButtonText: "Cancelar"
       }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/Hrae/QuinquenioC/EliminarC.php", {
+        $.post("../../../../App/Controllers/Central/QuinquenioC/EliminarC.php", {
                 id_object: id_object
             },
             function (data) {

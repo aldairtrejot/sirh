@@ -12,7 +12,7 @@ function buscarDependiente(){ //BUSQUEDA
 }
 
 function iniciarTabla_de(busqueda, paginador, id_tbl_empleados_hraes) { 
-    $.post('../../../../App/View/Hraes/Modulo/Dependientes/tabla.php', {
+    $.post('../../../../App/View/Central/Modulo/Dependientes/tabla.php', {
         busqueda: busqueda, 
         paginador: paginador, 
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
@@ -34,7 +34,7 @@ function agregarEditarDependiente(id_object){
         $("#agregar_editar_dependiente").find("input,textarea,select").val("");
     }
 
-    $.post("../../../../App/Controllers/Hrae/DependientesC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Central/DependientesC/DetallesC.php", {
         id_object: id_object
     },
         function (data) {
@@ -71,7 +71,7 @@ function agregarEditarByDbByDependiente() {
     let id_cat_dependientes_economicos = $("#id_cat_dependientes_economicos_d").val();
     let id_object = $("#id_object").val();
 
-    $.post("../../../../App/Controllers/Hrae/DependientesC/AgregarEditarC.php", {
+    $.post("../../../../App/Controllers/Central/DependientesC/AgregarEditarC.php", {
         id_object: id_object,
         nombre: nombre,
         curp:curp,
@@ -106,7 +106,7 @@ function eliminarDependiente(id_object) {//ELIMINAR USUARIO
         cancelButtonText: "Cancelar"
       }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/Hrae/DependientesC/EliminarC.php", {
+        $.post("../../../../App/Controllers/Central/DependientesC/EliminarC.php", {
                 id_object: id_object
             },
             function (data) {

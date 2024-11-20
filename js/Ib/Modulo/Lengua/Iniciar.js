@@ -12,7 +12,7 @@ function buscarLengua(){ //BUSQUEDA
 }
 
 function iniciarTabla_lg(busqueda, paginador, id_tbl_empleados_hraes) { 
-    $.post('../../../../App/View/Hraes/Modulo/Lengua/tabla.php', {
+    $.post('../../../../App/View/Central/Modulo/Lengua/tabla.php', {
         busqueda: busqueda, 
         paginador: paginador, 
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
@@ -33,7 +33,7 @@ function agregarEditarLengua(id_object){
         $("#agregar_editar_lengua").find("input,textarea,select").val("");
     }
 
-    $.post("../../../../App/Controllers/Hrae/LenguaC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Central/LenguaC/DetallesC.php", {
         id_object: id_object
     },
         function (data) {
@@ -56,7 +56,7 @@ function salirAgregarEditarLengua(){
 
 
 function guardarLengua() {
-    $.post("../../../../App/Controllers/Hrae/LenguaC/AgregarEditarC.php", {
+    $.post("../../../../App/Controllers/Central/LenguaC/AgregarEditarC.php", {
         id_object: $("#id_object").val(),
         id_cat_lengua: $("#id_cat_lengua").val(),
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
@@ -89,7 +89,7 @@ function eliminarLengua(id_object) {//ELIMINAR USUARIO
         cancelButtonColor:'#6c757d',
       }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/Hrae/LenguaC/EliminarC.php", {
+        $.post("../../../../App/Controllers/Central/LenguaC/EliminarC.php", {
                 id_object: id_object
             },
             function (data) {

@@ -53,6 +53,7 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
         id_object: id_object
     },
         function (data) {
+            console.log(data);
             let jsonData = JSON.parse(data);
             let entidad = jsonData.entidad;
             let entity = jsonData.response;
@@ -96,7 +97,7 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
 
 
 function agregarEditarByDb() {
-    $.post("../../../../App/Controllers/hrae/CentroTrabajoC/AgregarEditarC.php", {
+    $.post("../../../../App/Controllers/Hrae/CentroTrabajoC/AgregarEditarC.php", {
         id_object: $("#id_object").val(),
         nombre: $("#nombre").val(),
         clave_centro_trabajo: $("#clave_centro_trabajo").val(),
@@ -143,7 +144,7 @@ function eliminarEntity(id_object) {
         cancelButtonText: "Cancelar"
     }).then((result) => {
         if (result.isConfirmed) {
-            $.post("../../../../App/Controllers/hrae/CentroTrabajoC/EliminarC.php", {
+            $.post("../../../../App/Controllers/Hrae/CentroTrabajoC/EliminarC.php", {
                 id_object: id_object
             },
                 function (data, status) {

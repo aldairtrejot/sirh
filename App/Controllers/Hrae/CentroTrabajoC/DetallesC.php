@@ -12,6 +12,7 @@ $catalogoEstatus = new catalogoEstatus();
 $catalogoEstatusC = new catalogoEstatusC();
 $catSelectC = new CatSelectC();
 $catZonasEconomicas = new CatZonasEconomicas();
+$idZona = $response['id_cat_zonas_tabuladores_hraes'] ?? null;
 
 $id_object = $_POST['id_object'];
 
@@ -32,6 +33,8 @@ if ($id_object != null) {
         $entidad = $catSelectC->selectByEditCatalogo($catEntidad->selectByAllv2(), $row->returnArrayById($catEntidad->selectByEditv2($response['id_cat_entidad'])));
     }
     if ($response['id_cat_zona_economica'] != '') {
+    
+
         $zona = $catSelectC->selectByEditCatalogo($catZonasEconomicas->selectByAll(), $row->returnArrayById($catZonasEconomicas->selectByEdit($response['id_cat_zona_economica'])));
     }
 

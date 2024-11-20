@@ -1,20 +1,5 @@
 <div class="row font-size-modulo">
-    <div class="col-9">
-        <div class="form-inline">
-            <button onclick="mostrarRetardo()" type="button" class="btn btn-light" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus icono-pequeno-tabla"></i>
-                <span class="hide-menu text-button-add">&nbsp;Agregar Retardo</span>
-            </button>
-        </div>
-    </div>
-    <div class="col-3 search-container">
-        <input onkeyup="buscarRetardo();" id="buscar_retardo" type="text" placeholder="Buscar..."
-            class="form-control mr-sm-2 search-input">
-        <span class="search-icon"><i class="fas fa-search"></i></span>
-    </div>
-</div>
-<br>
-
+   
 <div class="row">
     <div class="col-12">
         <div class="col-12 table-responsive">

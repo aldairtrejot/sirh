@@ -46,6 +46,7 @@ function validarUnique(rfc,curp,numEmpleado,id_object){
         id_object:id_object
     },
         function (data) {
+            console.log(data);
             let jsonData = JSON.parse(data);//se obtiene el json
             let bool = jsonData.bool; 
             let message = jsonData.message;

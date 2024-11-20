@@ -6,7 +6,7 @@ function iniciarAdicional(){
 }
 
 function detallesAdicional(id_object){
-    $.post("../../../../App/Controllers/Hrae/AdicionalC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Central/AdicionalC/DetallesC.php", {
         id_object: id_object
     },
         function (data) {
@@ -26,7 +26,7 @@ function detallesAdicional(id_object){
 
 
 function gurdarAdicionals() {
-    $.post("../../../../App/Controllers/Hrae/AdicionalC/AgregarEditarC.php", {
+    $.post("../../../../App/Controllers/Central/AdicionalC/AgregarEditarC.php", {
         fecha_expedicion: $("#fecha_expedicion").val(),
         fecha_ingreso_gob_fed: $("#fecha_ingreso_gob_fed").val(),
         vigencia_del: $("#vigencia_del").val(),

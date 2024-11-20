@@ -68,5 +68,3 @@ if ($_POST['id_object'] != null) { //Modificar
         echo 'add';
     }
 }
-
-

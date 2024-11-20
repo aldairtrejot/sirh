@@ -12,7 +12,7 @@ function buscarJefe(){ //BUSQUEDA
 }
 
 function iniciarTabla_j(busqueda, paginador, id_tbl_empleados_hraes) { 
-    $.post('../../../../App/View/Hraes/Modulo/Jefe/tabla.php', {
+    $.post('../../../../App/View/Central/Modulo/Jefe/tabla.php', {
         busqueda: busqueda, 
         paginador: paginador, 
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
@@ -33,7 +33,7 @@ function agregarEditarJefe(id_object){
         $("#agregar_editar_cedula").find("input,textarea,select").val("");
     }
 
-    $.post("../../../../App/Controllers/Hrae/JefeC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Central/JefeC/DetallesC.php", {
         id_object: id_object
     },
         function (data) {
@@ -53,7 +53,7 @@ function salirAgregarEditarCedula(){
 
 
 function guardarJefe() {
-    $.post("../../../../App/Controllers/Hrae/JefeC/AgregarEditarC.php", {
+    $.post("../../../../App/Controllers/Central/JefeC/AgregarEditarC.php", {
         jefe_inmediato: $("#jefe_inmediato").val(),
         id_object: $("#id_object").val(),
         id_tbl_empleados_hraes:id_tbl_empleados_hraes,
@@ -84,7 +84,7 @@ function eliminarJefe(id_object) {//ELIMINAR USUARIO
         cancelButtonText: "Cancelar"
       }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/Hrae/JefeC/EliminarC.php", {
+        $.post("../../../../App/Controllers/Central/JefeC/EliminarC.php", {
                 id_object: id_object
             },
             function (data) {

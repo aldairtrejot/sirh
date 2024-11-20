@@ -26,7 +26,7 @@ function buscarIncidencia(){ //BUSQUEDA
 }
 
 function iniciarTabla_ins(busqueda, paginador, id_tbl_empleados_hraes) { 
-    $.post('../../../../App/View/Hraes/Modulo/Incidencias/tabla.php', {
+    $.post('../../../../App/View/Central/Modulo/Incidencias/tabla.php', {
         busqueda: busqueda, 
         paginador: paginador, 
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
@@ -48,7 +48,7 @@ function agregarEditarIncidencia(id_object){
         $("#agregar_editar_incidencia").find("input[type=checkbox], input[type=radio]").prop("checked", false);
     }
 
-    $.post("../../../../App/Controllers/Hrae/IncidenciasC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Central/IncidenciasC/DetallesC.php", {
         id_object: id_object
     },
         function (data) {
@@ -103,7 +103,7 @@ function guardarIncidencia() {
     let checkbox_value = document.getElementById('es_mas_de_un_dia');
     checkbox_value = checkbox_value.checked ? true : false;
 
-    $.post("../../../../App/Controllers/Hrae/IncidenciasC/AgregarEditarC.php", {
+    $.post("../../../../App/Controllers/Central/IncidenciasC/AgregarEditarC.php", {
         id_tbl_empleados_hraes:id_tbl_empleados_hraes,
         es_mas_de_un_dia:checkbox_value,
         fecha_inicio: $("#fecha_inicio_ins").val(),
@@ -140,7 +140,7 @@ function eliminarIncidecia(id_object) {//ELIMINAR USUARIO
         cancelButtonText: "Cancelar"
       }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/Hrae/IncidenciasC/EliminarC.php", {
+        $.post("../../../../App/Controllers/Central/IncidenciasC/EliminarC.php", {
                 id_object: id_object
             },
             function (data) {
@@ -162,7 +162,7 @@ function obtenerUsuario(id){
     let nombre_usuario_accion = document.getElementById("nombre_usuario_accion");
     nombre_usuario_accion.textContent = '-';
     if (typeof id !== 'undefined') {
-    $.post("../../../../App/Controllers/Hrae/AsistenciaC/UsuariosC.php", {
+    $.post("../../../../App/Controllers/Central/AsistenciaC/UsuariosC.php", {
         id: id,
     },
         function (data) {

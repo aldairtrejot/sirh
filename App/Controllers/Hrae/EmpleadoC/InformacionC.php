@@ -6,7 +6,7 @@ $modelMovimientosM = new ModelMovimientosM();
 $model = new modelEmpleadosHraes();
 $row = new Row();
 $modelPlazasHraes = new modelPlazasHraes();
-$schema = 'Hraes';
+$schema = 'public';
 
 $id_object = $_POST['id_tbl_empleados_hraes'];
 

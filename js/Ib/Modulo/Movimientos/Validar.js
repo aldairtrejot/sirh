@@ -54,7 +54,7 @@ function validarMovimiento(){
 
 ///LA FUNCION VALIDA EL ULTIMO MOVIMIENTO, FECHAS Y CAMPOS PARA ASIGNAR EL MOVIMIENTO
 function validarUltimoMovimiento(movimiento_general,id_object,fecha_movimiento,num_plaza_new,situacionPlaza){
-    $.post("../../../../App/Controllers/Hrae/MovimientosC/UltimoMovimientoC.php", {
+    $.post("../../../../App/Controllers/Central/MovimientosC/UltimoMovimientoC.php", {
         movimiento_general:movimiento_general,
         fecha_movimiento:fecha_movimiento,
         movimientoBaja:movimientoBaja,
@@ -82,7 +82,7 @@ function validarUltimoMovimiento(movimiento_general,id_object,fecha_movimiento,n
 ///LA FUNCION OBTIENE EL TIPO DE CONTRATACION  Y CENTRO DE TRABAJO CUANDO SE CAMBIA EL EVENTO DE  NUM_PLAZA
 document.getElementById("id_tbl_control_plazas_hraes").addEventListener("change", function() {
     let id_tbl_control_plazas_hraes = this.value;
-    $.post("../../../../App/Controllers/Hrae/MovimientosC/NumPlazaC.php", {
+    $.post("../../../../App/Controllers/Central/MovimientosC/NumPlazaC.php", {
         id_tbl_control_plazas_hraes: id_tbl_control_plazas_hraes,
     },
         function (data) {
@@ -116,7 +116,7 @@ document.getElementById("movimiento_general").addEventListener("change", functio
     } else {
         mostrarContenido('ocultar_model');
     }
-    $.post("../../../../App/Controllers/Hrae/MovimientosC/MEspecificoC.php", {
+    $.post("../../../../App/Controllers/Central/MovimientosC/MEspecificoC.php", {
         movimiento_general: movimiento_general,
     },
         function (data) {

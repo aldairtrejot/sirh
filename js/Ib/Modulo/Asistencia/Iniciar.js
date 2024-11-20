@@ -12,7 +12,7 @@ function buscarAsistencia(){ //BUSQUEDA
 }
 
 function iniciarTabla_ss(busqueda, paginador, id_tbl_empleados_hraes) { 
-    $.post('../../../../App/View/Hraes/Modulo/Asistencia/tabla.php', {
+    $.post('../../../../App/View/Central/Modulo/Asistencia/tabla.php', {
         busqueda: busqueda, 
         paginador: paginador, 
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
@@ -33,7 +33,7 @@ function agregarEditarAsistencia_(id_object){
         $("#agregar_editar_asistencia").find("input,textarea,select").val("");
     }
 
-    $.post("../../../../App/Controllers/Hrae/AsistenciaC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Central/AsistenciaC/DetallesC.php", {
         id_object: id_object
     },
         function (data) {
@@ -57,7 +57,7 @@ function salirAgregarEditarAsistencia(){
 
 
 function guardarAsistencia() {
-    $.post("../../../../App/Controllers/Hrae/AsistenciaC/AgregarEditarC.php", {
+    $.post("../../../../App/Controllers/Central/AsistenciaC/AgregarEditarC.php", {
         fecha: $("#fecha_ss_").val(),
         hora: $("#hora_ss_").val(),
         dispositivo: $("#dispositivo_ss").val(),
@@ -93,7 +93,7 @@ function eliminarAsistencia(id_object) {//ELIMINAR USUARIO
         cancelButtonText: "Cancelar"
       }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/Hrae/AsistenciaC/EliminarC.php", {
+        $.post("../../../../App/Controllers/Central/AsistenciaC/EliminarC.php", {
                 id_object: id_object
             },
             function (data) {
@@ -115,7 +115,7 @@ function obtenerUsuario(id){
     let nombre_usuario_accion = document.getElementById("nombre_usuario_accion");
     nombre_usuario_accion.textContent = '-';
     if (typeof id !== 'undefined') {
-    $.post("../../../../App/Controllers/Hrae/AsistenciaC/UsuariosC.php", {
+    $.post("../../../../App/Controllers/Central/AsistenciaC/UsuariosC.php", {
         id: id,
     },
         function (data) {

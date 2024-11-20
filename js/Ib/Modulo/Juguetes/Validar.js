@@ -20,7 +20,7 @@ function validarJuguete(){/// LA FUNCION
 ///FUNCION PARA CAMBIAR EL ESTADO DE CURP
 document.getElementById("id_ctrl_dependientes_economicos_j").addEventListener("change", function() {
     let id_ctrl_dependientes_economicos_hraes = this.value;
-    $.post("../../../../App/Controllers/Hrae/JuguetesC/CurpC.php", {
+    $.post("../../../../App/Controllers/Central/JuguetesC/CurpC.php", {
         id_ctrl_dependientes_economicos_hraes: id_ctrl_dependientes_economicos_hraes,
     },
         function (data) {
@@ -51,7 +51,7 @@ function handleChange(event){
 
 ///LA FUNCION PERMITE VALIDAR QUE LA CURP NO EXISTA EN EL SISTEMA DE JUEGOS
 function existeMenor(id_object,curp_j,id_cat_fecha_juguetes_j){
-    $.post("../../../../App/Controllers/Hrae/JuguetesC/ValidarMenorC.php", {
+    $.post("../../../../App/Controllers/Central/JuguetesC/ValidarMenorC.php", {
         id_object: id_object,
         curp_j:curp_j,
         id_cat_fecha_juguetes_j:id_cat_fecha_juguetes_j

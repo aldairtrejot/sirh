@@ -66,7 +66,7 @@ function validarCargaAsistencia(){
     data.append('file',file);
 
     $.ajax({
-    url:"../../../../App/Controllers/Hrae/AsistenciaC/CargaC.php",
+    url:"../../../../App/Controllers/Central/AsistenciaC/CargaC.php",
     type:'POST',
     contentType:false,
     data:data,
@@ -89,7 +89,7 @@ function validarCargaAsistencia(){
 
 function getFileAsistencia() {
     $.ajax({
-        url: "../../../../App/Controllers/Hrae/AsistenciaC/DescargaC.php",
+        url: "../../../../App/Controllers/Central/AsistenciaC/DescargaC.php",
         type: 'POST',
         xhrFields: {
             responseType: 'blob' // Configura la respuesta esperada como un blob (archivo binario)

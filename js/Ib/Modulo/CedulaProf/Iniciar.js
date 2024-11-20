@@ -12,7 +12,7 @@ function buscarCedula(){ //BUSQUEDA
 }
 
 function iniciarTabla_c(busqueda, paginador, id_tbl_empleados_hraes) { 
-    $.post('../../../../App/View/Hraes/Modulo/CedulaProf/tabla.php', {
+    $.post('../../../../App/View/Central/Modulo/CedulaProf/tabla.php', {
         busqueda: busqueda, 
         paginador: paginador, 
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
@@ -33,7 +33,7 @@ function agregarEditarCedula(id_object){
         $("#agregar_editar_cedula").find("input,textarea,select").val("");
     }
 
-    $.post("../../../../App/Controllers/Hrae/CedulaC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Central/CedulaC/DetallesC.php", {
         id_object: id_object
     },
         function (data) {
@@ -56,12 +56,13 @@ function agregarEditarByDbByCedula() {
     let cedula_profesional = $("#cedula_profesional").val();
     let id_object = $("#id_object").val();
 
-    $.post("../../../../App/Controllers/Hrae/CedulaC/AgregarEditarC.php", {
+    $.post("../../../../App/Controllers/Central/CedulaC/AgregarEditarC.php", {
         id_object: id_object,
         cedula_profesional: cedula_profesional,
         id_tbl_empleados_hraes:id_tbl_empleados_hraes,
     },
         function (data, status) {
+         
             if (data == 'edit'){
                 mensajeExito('Cédula profesional modificada con éxito');
             } else if (data == 'add') {
@@ -87,7 +88,7 @@ function eliminarCedula(id_object) {//ELIMINAR USUARIO
         cancelButtonText: "Cancelar"
       }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/Hrae/CedulaC/EliminarC.php", {
+        $.post("../../../../App/Controllers/Central/CedulaC/EliminarC.php", {
                 id_object: id_object
             },
             function (data, status) {
