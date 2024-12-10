@@ -285,8 +285,7 @@ class FaltaModelM
                     WHERE central.ctrl_retardo.fecha = Entradas.fecha
                       AND central.ctrl_retardo.hora = Entradas.hora
                       AND central.ctrl_retardo.id_tbl_empleados_hraes = Entradas.id_tbl_empleados_hraes
-                );
-        ");
+                );");
         return $query;
     }
     
@@ -418,29 +417,38 @@ class FaltaModelM
     public function process_5()
     {
         $query = pg_query("UPDATE central.cat_asistencia_config
-SET fecha_ult_proceso = CURRENT_DATE 
-WHERE id_cat_asistencia_config = 1; 
-(SELECT fecha_ult_proceso FROM central.cat_asistencia_config WHERE id_cat_asistencia_config = 1) -- Agregar esta condición");
-        return $query;
-    }
+    SET fecha_ult_proceso = CURRENT_DATE 
+    WHERE id_cat_asistencia_config = 1; 
+    (SELECT fecha_ult_proceso FROM central.cat_asistencia_config WHERE id_cat_asistencia_config = 1) -- Agregar esta condición");
+            return $query;
+        }
 
-    public function process_6()
-    {
-        $query = pg_query("INSERT INTO central.ctrl_faltas (id_tbl_empleados_hraes,es_por_retardo,id_cat_retardo_tipo,id_cat_retardo_estatus,fecha)
-
-        SELECT CASE WHEN (NoRet >= 3 AND NoRet <  6) THEN 1
-                    WHEN (NoRet >= 6 AND NoRet <  9) THEN 2
-                    WHEN (NoRet >= 9 AND NoRet < 12) THEN 3
-                    WHEN (NoRet >= 12 			   ) THEN 4
-                END AS Falta
-        FROM
-            (
-            SELECT COUNT(*)+6 NoRet
-                FROM central.ctrl_retardo
-            WHERE fecha <= '15/08/2024'
-            AND id_tbl_empleados_hraes = = $id
-            ) AS Retardos;
-            ");
+        public function process_6()
+        {
+            $query = pg_query("INSERT INTO central.ctrl_faltas (
+    id_tbl_empleados_hraes,
+    es_por_retardo,
+    id_cat_retardo_tipo,
+    id_cat_retardo_estatus,
+    fecha
+)
+SELECT 
+    123 AS id_tbl_empleados_hraes,            -- Reemplaza 123 con un ID real de empleado
+    TRUE AS es_por_retardo,                   -- Es por retardo
+    3 AS id_cat_retardo_tipo,                 -- Tipo de retardo
+    CASE 
+        WHEN (NoRet >= 3 AND NoRet < 6) THEN 1
+        WHEN (NoRet >= 6 AND NoRet < 9) THEN 2
+        WHEN (NoRet >= 9 AND NoRet < 12) THEN 3
+        WHEN (NoRet >= 12) THEN 4
+    END AS id_cat_retardo_estatus,            -- Estatus de retardo
+    CURRENT_DATE AS fecha                     -- Fecha actual
+FROM (
+    SELECT COUNT(*) + 6 AS NoRet
+    FROM central.ctrl_retardo
+    WHERE fecha <= '2024-08-15'               -- Fecha en formato YYYY-MM-DD
+      AND id_tbl_empleados_hraes = 123       -- Reemplaza 123 con un ID real de empleado
+) AS Retardos;");
         return $query;
 
     }        
