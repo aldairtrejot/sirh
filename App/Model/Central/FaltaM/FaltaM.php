@@ -477,7 +477,11 @@ SELECT
     '00:00:00' AS hora,                            -- Hora predeterminada
     1 AS cantidad                                  -- Una falta
 FROM (
+<<<<<<< HEAD
     -- Generar todas las combinaciones de empleados y fechas del rango para sacar la informacion
+=======
+    -- Generar todas las combinaciones de empleados y fechas del rango
+>>>>>>> JOAQUIN
     SELECT 
         e.id_tbl_empleados_hraes,
         g.fecha
