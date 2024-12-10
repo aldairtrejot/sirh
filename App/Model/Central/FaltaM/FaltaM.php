@@ -159,95 +159,97 @@ class FaltaModelM
     
 
     public function getAllFaltas($paginator)
-{
-    $query = ("SELECT 
-                    CONCAT(UPPER(central.tbl_empleados_hraes.nombre), ' ',
-                        UPPER(central.tbl_empleados_hraes.primer_apellido), ' ',
-                        UPPER(central.tbl_empleados_hraes.segundo_apellido)) AS nombre_completo,
-                    UPPER(central.tbl_empleados_hraes.rfc) AS rfc,
-                    'FALTA POR RETARDO',
-                    to_char(central.ctrl_faltas.fecha, 'DD-MM-YYYY'),
-                    to_char(central.ctrl_faltas.hora, 'HH24:MI'),
-                    central.ctrl_faltas.cantidad,
-                    UPPER(central.cat_retardo_tipo.descripcion),
-                    UPPER(central.cat_retardo_estatus.descripcion),
-                    central.ctrl_faltas.id_user,
-                    central.ctrl_faltas.id_ctrl_faltas
-                FROM central.ctrl_faltas
-                INNER JOIN central.cat_retardo_tipo
-                    ON central.ctrl_faltas.id_cat_retardo_tipo =
-                        central.cat_retardo_tipo.id_cat_retardo_tipo
-                INNER JOIN central.cat_retardo_estatus
-                    ON central.ctrl_faltas.id_cat_retardo_estatus =
-                        central.cat_retardo_estatus.id_cat_retardo_estatus
-                INNER JOIN central.tbl_empleados_hraes
-                    ON central.ctrl_faltas.id_tbl_empleados_hraes =
-                        central.tbl_empleados_hraes.id_tbl_empleados_hraes 
-                WHERE central.ctrl_faltas.es_por_retardo 
-                AND NOT EXISTS (
-                    SELECT 1
-                    FROM central.masivo_ctrl_temp_faltas_just J
-                    JOIN central.tbl_empleados_hraes E ON J.rfc = E.rfc
-                    WHERE central.ctrl_faltas.id_tbl_empleados_hraes = E.id_tbl_empleados_hraes
-                    AND central.ctrl_faltas.fecha = J.fecha::DATE
-                    AND central.ctrl_faltas.id_cat_retardo_tipo = (
-                        SELECT id_cat_retardo_tipo
-                        FROM central.cat_retardo_tipo
-                        WHERE descripcion = UPPER(J.tipo_falta)
+    {
+        $query = ("SELECT 
+                    CONCAT(UPPER(e.nombre), ' ', UPPER(e.primer_apellido), ' ', UPPER(e.segundo_apellido)) AS nombre_completo,
+                    UPPER(e.rfc) AS rfc,
+                    'FALTA POR RETARDO' AS tipo_falta,
+                    TO_CHAR(f.fecha, 'DD-MM-YYYY') AS fecha,
+                    TO_CHAR(f.hora, 'HH24:MI') AS hora,
+                    f.cantidad,
+                    UPPER(rt.descripcion) AS tipo,
+                    UPPER(re.descripcion) AS estatus,
+                    f.id_user,
+                    f.id_ctrl_faltas
+                FROM central.ctrl_faltas f
+                INNER JOIN central.tbl_empleados_hraes e ON f.id_tbl_empleados_hraes = e.id_tbl_empleados_hraes
+                INNER JOIN central.cat_retardo_tipo rt ON f.id_cat_retardo_tipo = rt.id_cat_retardo_tipo
+                INNER JOIN central.cat_retardo_estatus re ON f.id_cat_retardo_estatus = re.id_cat_retardo_estatus
+                WHERE NOT EXISTS (
+                    SELECT 1 
+                    FROM central.masivo_ctrl_temp_faltas_just mj
+                    WHERE f.id_tbl_empleados_hraes = (
+                        SELECT id_tbl_empleados_hraes 
+                        FROM central.tbl_empleados_hraes 
+                        WHERE rfc = mj.rfc
                     )
+                    AND f.fecha = TO_DATE(mj.fecha, 'YYYY-MM-DD')
+                    AND rt.descripcion = UPPER(mj.tipo_falta)
                 )
-                ORDER BY central.ctrl_faltas.fecha DESC
+                AND NOT EXISTS (
+                    SELECT 1 
+                    FROM central.ctrl_incidencias ci
+                    WHERE f.id_tbl_empleados_hraes = ci.id_tbl_empleados_hraes
+                    AND f.fecha BETWEEN ci.fecha_inicio AND ci.fecha_fin
+                )
+                ORDER BY f.fecha DESC
                 LIMIT 5 OFFSET $paginator;");
-    return $query;
-}
+        return $query;
+    }
 
-
-public function getAllFaltasBusqueda($busqueda, $paginator)
-{
-    $query = ("SELECT 
-                    CONCAT(UPPER(central.tbl_empleados_hraes.nombre), ' ',
-                        UPPER(central.tbl_empleados_hraes.primer_apellido), ' ',
-                        UPPER(central.tbl_empleados_hraes.segundo_apellido)) AS nombre_completo,
-                    UPPER(central.tbl_empleados_hraes.rfc) AS rfc,
-                    'FALTA POR RETARDO',
-                    to_char(central.ctrl_faltas.fecha, 'DD-MM-YYYY') AS fecha,
-                    to_char(central.ctrl_faltas.hora, 'HH24:MI') AS hora,
-                    central.ctrl_faltas.cantidad,
-                    UPPER(central.cat_retardo_tipo.descripcion) AS tipo,
-                    UPPER(central.cat_retardo_estatus.descripcion) AS estatus,
-                    central.ctrl_faltas.id_user,
-                    central.ctrl_faltas.id_ctrl_faltas
-                FROM central.ctrl_faltas
-                INNER JOIN central.cat_retardo_tipo
-                    ON central.ctrl_faltas.id_cat_retardo_tipo = central.cat_retardo_tipo.id_cat_retardo_tipo
-                INNER JOIN central.cat_retardo_estatus
-                    ON central.ctrl_faltas.id_cat_retardo_estatus = central.cat_retardo_estatus.id_cat_retardo_estatus
-                INNER JOIN central.tbl_empleados_hraes
-                    ON central.ctrl_faltas.id_tbl_empleados_hraes = central.tbl_empleados_hraes.id_tbl_empleados_hraes 
-                WHERE central.ctrl_faltas.es_por_retardo 
-                AND (
-                        CONCAT(UPPER(central.tbl_empleados_hraes.nombre), ' ',
-                            UPPER(central.tbl_empleados_hraes.primer_apellido), ' ',
-                            UPPER(central.tbl_empleados_hraes.segundo_apellido)) LIKE '%$busqueda%'
-                        OR UPPER(central.tbl_empleados_hraes.rfc) LIKE '%$busqueda%'
-                        OR to_char(central.ctrl_faltas.fecha, 'DD-MM-YYYY') LIKE '%$busqueda%'
-                        OR to_char(central.ctrl_faltas.hora, 'HH24:MI') LIKE '%$busqueda%'
-                        OR CAST(central.ctrl_faltas.cantidad AS TEXT) LIKE '%$busqueda%'
-                        OR UPPER(central.cat_retardo_tipo.descripcion) LIKE '%$busqueda%'
-                        OR UPPER(central.cat_retardo_estatus.descripcion) LIKE '%$busqueda%'
+    public function getAllFaltasBusqueda($busqueda, $paginator)
+    {
+        $query = ("SELECT 
+                    CONCAT(UPPER(e.nombre), ' ', UPPER(e.primer_apellido), ' ', UPPER(e.segundo_apellido)) AS nombre_completo,
+                    UPPER(e.rfc) AS rfc,
+                    'FALTA POR RETARDO' AS tipo_falta,
+                    TO_CHAR(f.fecha, 'DD-MM-YYYY') AS fecha,
+                    TO_CHAR(f.hora, 'HH24:MI') AS hora,
+                    f.cantidad,
+                    UPPER(rt.descripcion) AS tipo,
+                    UPPER(re.descripcion) AS estatus,
+                    f.id_user,
+                    f.id_ctrl_faltas
+                FROM central.ctrl_faltas f
+                INNER JOIN central.tbl_empleados_hraes e ON f.id_tbl_empleados_hraes = e.id_tbl_empleados_hraes
+                INNER JOIN central.cat_retardo_tipo rt ON f.id_cat_retardo_tipo = rt.id_cat_retardo_tipo
+                INNER JOIN central.cat_retardo_estatus re ON f.id_cat_retardo_estatus = re.id_cat_retardo_estatus
+                WHERE (
+                        CONCAT(UPPER(e.nombre), ' ', UPPER(e.primer_apellido), ' ', UPPER(e.segundo_apellido)) LIKE '%$busqueda%'
+                        OR UPPER(e.rfc) LIKE '%$busqueda%'
+                        OR TO_CHAR(f.fecha, 'DD-MM-YYYY') LIKE '%$busqueda%'
+                        OR TO_CHAR(f.hora, 'HH24:MI') LIKE '%$busqueda%'
+                        OR CAST(f.cantidad AS TEXT) LIKE '%$busqueda%'
+                        OR UPPER(rt.descripcion) LIKE '%$busqueda%'
+                        OR UPPER(re.descripcion) LIKE '%$busqueda%'
                     )
-                      
-             
-                ORDER BY central.ctrl_faltas.fecha DESC
-                LIMIT 5 OFFSET $paginator;");
-    return $query;
-}
+                    AND NOT EXISTS (
+                        SELECT 1 
+                        FROM central.masivo_ctrl_temp_faltas_just mj
+                        WHERE f.id_tbl_empleados_hraes = (
+                            SELECT id_tbl_empleados_hraes 
+                            FROM central.tbl_empleados_hraes 
+                            WHERE rfc = mj.rfc
+                        )
+                        AND f.fecha = TO_DATE(mj.fecha, 'YYYY-MM-DD')
+                        AND rt.descripcion = UPPER(mj.tipo_falta)
+                    )
+                    AND NOT EXISTS (
+                        SELECT 1 
+                        FROM central.ctrl_incidencias ci
+                        WHERE f.id_tbl_empleados_hraes = ci.id_tbl_empleados_hraes
+                        AND f.fecha BETWEEN ci.fecha_inicio AND ci.fecha_fin
+                    )
+                    ORDER BY f.fecha DESC
+                    LIMIT 5 OFFSET $paginator;");
+        return $query;
+    }
 
 
         ///SCRIP PARA CALCULO DE FLATAS DE FORMA MASIVApublic function process_1()
     public function process_1()
     {
-        $query = pg_query(" INSERT INTO central.ctrl_retardo (
+        $query = pg_query("INSERT INTO central.ctrl_retardo (
                 fecha, 
                 hora, 
                 observaciones, 
@@ -404,7 +406,7 @@ public function getAllFaltasBusqueda($busqueda, $paginator)
 		    END AS fecha    --Para este caso tomará el día 15 del mes cuando la fecha actual sea menor o igual a 15, de lo contrario el último día del mes
                 FROM(SELECT COUNT(*) NoRet, id_tbl_empleados_hraes
 		FROM central.ctrl_retardo
-	WHERE fecha <= '15/08/2024' 							-- ### Aquí ponemos una condición para una fecha mayor o igual, o se quita para procesar todo
+						-- ### Aquí ponemos una condición para una fecha mayor o igual, o se quita para procesar todo
 	GROUP BY id_tbl_empleados_hraes
 	HAVING COUNT(*) >= 3
 	) AS Retardos;
@@ -415,13 +417,7 @@ public function getAllFaltasBusqueda($busqueda, $paginator)
 
     public function process_5()
     {
-        $query = pg_query("--########################
-                            --### PROCESO VALIDADO ### 5
-                            --########################
-                            --==========================================================================
-                            --### Script para Actualizar la Fecha de Último Proceso en Configuración ###
-                            --==========================================================================
-                           UPDATE central.cat_asistencia_config
+        $query = pg_query("UPDATE central.cat_asistencia_config
 SET fecha_ult_proceso = CURRENT_DATE 
 WHERE id_cat_asistencia_config = 1; 
 (SELECT fecha_ult_proceso FROM central.cat_asistencia_config WHERE id_cat_asistencia_config = 1) -- Agregar esta condición");
@@ -442,7 +438,7 @@ WHERE id_cat_asistencia_config = 1;
             SELECT COUNT(*)+6 NoRet
                 FROM central.ctrl_retardo
             WHERE fecha <= '15/08/2024'
-            AND id_tbl_empleados_hraes = 3925
+            AND id_tbl_empleados_hraes = = $id
             ) AS Retardos;
             ");
         return $query;
@@ -463,7 +459,7 @@ WHERE id_cat_asistencia_config = 1;
     cantidad
 )
 SELECT 
-    e.id_tbl_empleados_hraes,                      -- ID del empleado
+    f.id_tbl_empleados_hraes,                      -- ID del empleado
     'FALTA POR OMISIÓN' AS observaciones,          -- Observación
     FALSE AS es_por_retardo,                       -- No es por retardo
     3 AS id_cat_retardo_tipo,                      -- Tipo de falta por omisión
@@ -478,28 +474,34 @@ FROM (
         e.id_tbl_empleados_hraes,
         g.fecha
     FROM 
-        central.tbl_empleados_hraes e
+        central.tbl_empleados_hraes e              -- Tabla de empleados
     CROSS JOIN (
-        -- Generar el rango de fechas a evaluar
+        -- Generar el rango de fechas dinámicamente desde ctrl_asistencia
         SELECT 
             GENERATE_SERIES(
-                (SELECT fecha_inicio FROM central.cat_asistencia_config WHERE id_cat_asistencia_config = 1),
-                (SELECT fecha_fin FROM central.cat_asistencia_config WHERE id_cat_asistencia_config = 1),
+                (SELECT MIN(fecha) FROM central.ctrl_asistencia),
+                (SELECT MAX(fecha) FROM central.ctrl_asistencia),
                 '1 day'::INTERVAL
             )::DATE AS fecha
     ) g
+    INNER JOIN central.ctrl_asistencia_info ai    -- Filtrar empleados activos
+        ON e.id_tbl_empleados_hraes = ai.id_tbl_empleados_hraes
+        AND ai.id_cat_asistencia_estatus = 1      -- Solo empleados con estatus ACTIVO
 ) f
 LEFT JOIN central.ctrl_asistencia a
     ON f.id_tbl_empleados_hraes = a.id_tbl_empleados_hraes
-    AND f.fecha = a.fecha -- Verificar si ya hay un registro de asistencia en esa fecha
-WHERE 
-    a.fecha IS NULL -- No hay registros de asistencia en esa fecha
-    AND NOT EXISTS ( -- Evitar duplicados en ctrl_faltas
+    AND f.fecha = a.fecha                          -- Verificar si ya hay un registro de asistencia en esa fecha
+WHERE a.fecha IS NULL                              -- No hay registros de asistencia en esa fecha
+    AND f.fecha NOT IN (                           -- Excluir fechas en cat_dias_festivos
+        SELECT fecha 
+        FROM central.cat_dias_festivos
+    )
+    AND NOT EXISTS (                               -- Evitar duplicados en ctrl_faltas
         SELECT 1 
         FROM central.ctrl_faltas cf
         WHERE cf.id_tbl_empleados_hraes = f.id_tbl_empleados_hraes
           AND cf.fecha = f.fecha
-          AND cf.id_cat_retardo_tipo = 3 -- Ya existe una falta por omisión
+          AND cf.id_cat_retardo_tipo = 3           -- Ya existe una falta por omisión
     );");
         return $query;
 
