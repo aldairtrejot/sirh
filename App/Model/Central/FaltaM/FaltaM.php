@@ -519,6 +519,9 @@ WHERE a.fecha IS NULL                              -- No hay registros de asiste
         return $query;
 
     }        
+=======
+    }    
+>>>>>>> TEST
 
 
     public function truncateTableTmpFaltas()
@@ -541,7 +544,7 @@ WHERE a.fecha IS NULL                              -- No hay registros de asiste
 
     public function udpdateFaltas()
     {
-        $query = pg_query(" UPDATE central.ctrl_retardo R
+        $query = pg_query("UPDATE central.ctrl_retardo R
                             SET id_cat_retardo_estatus = 3, -- JUSTIFICADA
                                 observaciones = J.observaciones	-- Observaciones del Justificación
                             FROM central.masivo_ctrl_temp_faltas_just J	-- Justificaciones
