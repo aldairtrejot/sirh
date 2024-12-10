@@ -495,7 +495,12 @@ FROM (
     INNER JOIN central.ctrl_asistencia_info ai    -- Filtrar empleados activos
         ON e.id_tbl_empleados_hraes = ai.id_tbl_empleados_hraes
         AND ai.id_cat_asistencia_estatus = 1      -- Solo empleados con estatus ACTIVO
-) f
+
+    INNER JOIN asistencia.ctrl_plantilla_qna p
+        ON e.id_tbl_empleados_hraes = CAST(p.ids AS INTEGER)
+        AND p.ubicacion = 'E CAMPA'
+        AND p.ids ~ '^\d+$'                      -- Filtrar solo valores numéricos en 
+        ) f
 LEFT JOIN central.ctrl_asistencia a
     ON f.id_tbl_empleados_hraes = a.id_tbl_empleados_hraes
     AND f.fecha = a.fecha                          -- Verificar si ya hay un registro de asistencia en esa fecha
