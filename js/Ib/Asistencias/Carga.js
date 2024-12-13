@@ -24,36 +24,37 @@ function mostrarModalCargaAsistencia() {
 }
 
 function validarCarga_() {
-
-
   let bool = false;
   let maxMB = 5;
   let fileInput = document.getElementById('customFile');
   let file = fileInput.files[0];
 
-  console.log(maxMB);
-
-
-  if (file) {
-    let fileSize = file.size;
-    let fileSizeKB = fileSize / 1024;
-    let fileMb = fileSizeKB / 1024;
-    let fileExtension = file.name.split('.').pop();
-
+  try {
     console.log(maxMB);
 
-    if (fileMb >= maxMB) {
-      notyf.error('El archivo debe tener un peso máximo de ' + maxMB + ' MB');
-      //mensajeError('El archivo debe tener un peso máximo de ' + maxMB + ' MB');
-    } else if (fileExtension != 'xls') {
-      notyf.error('La extensión del archivo debe terminar .xls');
-      //mensajeError('La extensión del archivo debe terminar .xlsx');
+    if (file) {
+      let fileSize = file.size;
+      let fileSizeKB = fileSize / 1024;
+      let fileMb = fileSizeKB / 1024;
+      let fileExtension = file.name.split('.').pop();
+
+      console.log(maxMB);
+
+      if (fileMb >= maxMB) {
+        notyf.error('El archivo debe tener un peso máximo de ' + maxMB + ' MB');
+      } else if (fileExtension != 'xls') {
+        notyf.error('La extensión del archivo debe terminar .xls');
+      } else {
+        processDataAsistencia(file);
+      }
     } else {
-      processDataAsistencia(file);
+      notyf.error('Campo seleccione un archivo no puede estar vacio');
     }
-  } else {
-    notyf.error('Campo seleccione un archivo no puede estar vacio');
+  } catch (error) {
+    notyf.error('Ocurrió un error al validar el archivo: ' + error.message);
+    console.error('Error al validar el archivo:', error);
   }
+
   return bool;
 }
 
