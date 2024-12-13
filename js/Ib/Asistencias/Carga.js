@@ -74,8 +74,8 @@ function processDataAsistencia(file) {
   data.append('file', file);
 
   $.ajax({
-    url: "http:../../../../App/Controllers/Central/AsistenciaC/CargaC.php",
-   //rl: "https://http://172.16.17.6/test/sirh/App/Controllers/Central/AsistenciaC/CargaC.php",
+ // url: "../../../../App/Controllers/Central/AsistenciaC/CargaC.php",
+    url: "http://172.16.17.6/test/sirh/App/Controllers/Central/AsistenciaC/CargaC.php",
     type: 'POST',
     contentType: false,
     data: data,
