@@ -93,7 +93,7 @@
                     <div class="row mx-1">
                         <div class="col-3">
                             <label for="campo" class="text-input-rem form-label input-text-form">Fecha
-                                inicio</label><label class="text-required">*</label>
+                                inicio</label>
                             <input type="date" id="fecha_desde_" class="form-control custom-input">
                             <div class="line"></div>
                         </div>
@@ -105,7 +105,7 @@
                         </div>
                         <div class="col-3">
                             <label for="campo" class="text-input-rem form-label input-text-form">Fecha inicio
-                                n&oacutemina</label><label class="text-required">*</label>
+                                n&oacutemina</label><label class="text-required"></label>
                             <input type="date" id="fecha_inicio_nom" placeholder="Motivo"
                                 class="form-control custom-input">
                             <div class="line"></div>

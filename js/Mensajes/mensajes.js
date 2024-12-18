@@ -73,7 +73,7 @@ function validarNull(cadena){
 function validarData(data, text){
   let bool = true;
   if (validarNull(data)){
-    notyf.error('Campo '+ text + '* no puede estar vacio.');
+    notyf.error('Campo '+ text + '* no puede estar vacis.');
       bool = false;
   } 
   return bool;
