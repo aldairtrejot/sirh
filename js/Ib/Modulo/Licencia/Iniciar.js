@@ -37,6 +37,8 @@ function agregarEditarLicencia(id_object){
         id_object: id_object
     },
         function (data) {
+            console.log(data);
+
             let jsonData = JSON.parse(data);
             let entity = jsonData.entity; 
             let licencia = jsonData.licencia;
@@ -76,7 +78,9 @@ function salirAgregarLicencia(){
 
 
 function guardarLicencia() {
+    console.log(data);
     $.post("../../../../App/Controllers/Central/LicenciaC/AgregarEditarC.php", {
+      
         id_object: $("#id_object").val(),
         id_cat_tipo_licencia: $("#id_cat_tipo_licencia").val(),
         id_cat_tipo_dias: $("#id_cat_tipo_dias").val(),
