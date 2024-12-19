@@ -6,53 +6,24 @@
                 <h6 class="card-header text-center background-modal color-text-tittle">Tipo de incidencia</h6>
                 <div class="nav flex-column nav-pills text-tittle-card-nav-x" id="v-tabs-tab" role="tablist"
                     aria-orientation="vertical">
-                    <a onclick="buscarLicencia();" class="nav-link-mod active" id="v-tabs-messages-tab" data-toggle="pill"
-                        href="#v-tabs-messages" role="tab" aria-controls="v-tabs-messages" aria-selected="true">
+                    <a onclick="buscarLicencia();" class="nav-link-mod" id="v-tabs-messages-tab" data-toggle="pill"
+                        href="#v-tabs-messages" role="tab" aria-controls="v-tabs-messages" aria-selected="false">
                         <i class="fa fa-folder-open mr-2"></i> Licencias</a>
-                    <a onclick="buscarIncidencia();" class="nav-link-mod" id="v-tabs-incidencias-tab" data-toggle="pill"
-                        href="#v-tabs-incidencias" role="tab" aria-controls="v-tabs-incidencias" aria-selected="false">
+                    <a onclick="buscarIncidencia();" class="nav-link-mod" id="v-tabs-messages-tab" data-toggle="pill"
+                        href="#v-tabs-incidencias" role="tab" aria-controls="v-tabs-messages" aria-selected="false">
                         <i class="fa fa-folder-open mr-2"></i> Incidencias</a>
-                    <a onclick="buscarPreventivas();" class="nav-link-mod" id="v-tabs-preventivas-tab" data-toggle="pill"
-                        href="#v-tabs-preventivas" role="tab" aria-controls="v-tabs-preventivas" aria-selected="false">
+                    <a onclick="buscarPreventivas();" class="nav-link-mod" id="v-tabs-messages-tab" data-toggle="pill"
+                        href="#v-tabs-preventivas" role="tab" aria-controls="v-tabs-messages" aria-selected="false">
                         <i class="fa fa-folder-open mr-2"></i> Preventivas</a>
                 </div>
             </div>
         </div>
         <div class="col-12 col-md-12 col-lg-12 col-xl-10 mb-10">
             <div class="tab-content" id="v-tabs-tabContent">
-                <!-- Eliminar esta sección de Retardo -->
-                <!--
                 <div class="tab-pane fade show active" id="v-tabs-home" role="tabpanel"
                     aria-labelledby="v-tabs-home-tab">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card font-size-modulo shadow-lg">
-                                    <h5 class="card-header text-center background-modal color-text-tittle">Retardo</h5>
-                                    <div class="card-body">
-                                        <?php include 'Retardo/index.php' ?>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                -->
-                <div class="tab-pane fade show active" id="v-tabs-messages" role="tabpanel" aria-labelledby="v-tabs-messages-tab">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card font-size-modulo shadow-lg">
-                                    <h5 class="card-header text-center background-modal color-text-tittle">Licencias</h5>
-                                    <div class="card-body">
-                                        <?php include 'Licencias/index.php' ?>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                 <!--<div class="tab-pane fade" id="v-tabs-profile" role="tabpanel" aria-labelledby="v-tabs-profile-tab">
+                    
+                <div class="tab-pane fade" id="v-tabs-profile" role="tabpanel" aria-labelledby="v-tabs-profile-tab">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12">
@@ -65,9 +36,24 @@
                             </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
+                <div class="tab-pane fade" id="v-tabs-messages" role="tabpanel" aria-labelledby="v-tabs-messages-tab">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card font-size-modulo shadow-lg">
+                                    <h5 class="card-header text-center background-modal color-text-tittle">Licencias
+                                    </h5>
+                                    <div class="card-body">
+                                        <?php include 'Licencias/index.php' ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="tab-pane fade" id="v-tabs-incidencias" role="tabpanel"
-                    aria-labelledby="v-tabs-incidencias-tab">
+                    aria-labelledby="v-tabs-messages-tab">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12">
@@ -84,7 +70,7 @@
                     </div>
                 </div>
                 <div class="tab-pane fade" id="v-tabs-preventivas" role="tabpanel"
-                    aria-labelledby="v-tabs-preventivas-tab">
+                    aria-labelledby="v-tabs-messages-tab">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12">
@@ -103,4 +89,4 @@
             </div>
         </div>
     </div>
-</div>
+</div>  
