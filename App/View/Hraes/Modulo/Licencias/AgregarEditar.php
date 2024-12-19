@@ -83,7 +83,7 @@
                         <div class="col-3">
                             <label for="campo" class="text-input-rem form-label input-text-form">Horas</label><label
                                 class="text-required"></label>
-                            <input type="number" class="form-control div-spacing custom-input" id="horas_max_dia"
+                            <input type="number" class="form-control custom-input" id="horas_max_dia"
                                 name="codigo_postal" placeholder="Horas max por día" oninput="validarNumero(this)">
                             <div class="line"></div>
                         </div>
@@ -93,19 +93,19 @@
                     <div class="row mx-1">
                         <div class="col-3">
                             <label for="campo" class="text-input-rem form-label input-text-form">Fecha
-                                inicio</label><label class="text-required">*</label>
-                            <input type="date" id="fecha_desde_" class="form-control custom-input">
+                                inicio</label>
+                            <input type="date" id="fecha_desde_licen_hrae" class="form-control custom-input">
                             <div class="line"></div>
                         </div>
                         <div class="col-3">
                             <label for="campo" class="text-input-rem form-label input-text-form">Fecha fin</label><label
                                 class="text-required">*</label>
-                            <input type="date" id="fecha_hasta_" placeholder="Motivo" class="form-control custom-input">
+                            <input type="date" id="fecha_hasta_licen_hrae" placeholder="Motivo" class="form-control custom-input">
                             <div class="line"></div>
                         </div>
                         <div class="col-3">
                             <label for="campo" class="text-input-rem form-label input-text-form">Fecha inicio
-                                n&oacutemina</label><label class="text-required">*</label>
+                                n&oacutemina</label><label class="text-required"></label>
                             <input type="date" id="fecha_inicio_nom" placeholder="Motivo"
                                 class="form-control custom-input">
                             <div class="line"></div>
@@ -124,14 +124,14 @@
                         <div class="col-3">
                             <label for="campo" class="text-input-rem form-label input-text-form">Fecha
                                 registro</label><label class="text-required">*</label>
-                            <input type="date" id="fecha_registro_" placeholder="Motivo"
+                            <input type="date" id="fecha_registro_licen_hrae" placeholder="Motivo"
                                 class="form-control custom-input">
                             <div class="line"></div>
                         </div>
                         <div class="col-9">
                             <label for="campo"
                                 class="text-input-rem form-label input-text-form">Observaciones</label><label
-                                class="text-required">*</label>
+                                class="text-required"></label>
                             <input type="text" placeholder="Observaciones"
                                 onkeyup="convertirAMayusculas(event,'observaciones_licencia')"
                                 class="form-control custom-input" id="observaciones_licencia" maxlength="75">
