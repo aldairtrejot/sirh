@@ -53,6 +53,10 @@
                                     href="#nav-escolaridad" onclick="buscarRetardo();" role="tab"
                                     aria-controls="nav-contact" aria-selected="false"><i class="fa fa-history"></i>
                                     Retardos</a>
+                                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab"
+                                    href="#nav-escolaridad" onclick="buscarPreventiva();" role="tab"
+                                    aria-controls="nav-contact" aria-selected="false"><i class="fa fa-history"></i>
+                                    Retardos</a>    
                             </div>
                         </nav>
                         <div class="tab-content" id="nav-tabContent">
