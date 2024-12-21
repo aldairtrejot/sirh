@@ -37,7 +37,6 @@ function agregarEditarLicencia(id_object){
         id_object: id_object
     },
         function (data) {
-
             let jsonData = JSON.parse(data);
             let entity = jsonData.entity; 
             let licencia = jsonData.licencia;
@@ -45,11 +44,11 @@ function agregarEditarLicencia(id_object){
             let estatus_ = jsonData.estatus;
 
             $('#horas_max_dia').val(entity.horas_max_dia);
-            $('#fecha_desde_').val(entity.fecha_desde);
-            $('#fecha_hasta_').val(entity.fecha_hasta);
+            $('#fecha_desde_licen_hrae').val(entity.fecha_desde);
+            $('#fecha_hasta_licen_hrae').val(entity.fecha_hasta);
             $('#fecha_inicio_nom').val(entity.fecha_inicio_nom);
             $('#fecha_fin_nomina').val(entity.fecha_fin_nomina);
-            $('#fecha_registro_').val(entity.fecha_registro);
+            $('#fecha_registro_licen_hrae').val(entity.fecha_registro);
             $('#observaciones_licencia').val(entity.observaciones);
 
             $('#id_cat_tipo_licencia').empty();
@@ -93,11 +92,11 @@ function guardarLicencia() {
     },
         function (data) {
             if (data == 'edit'){
-                mensajeExito('Licencia modificada con éxito');
+                notyf.success('Licencia modificada con éxito');
             } else if (data == 'add') {
-                mensajeExito('Licencia agregada con éxito');  
+                notyf.success('Licencia agregada con éxito');  
             } else {
-                mensajeError(data);
+                notyf.error(mensajeSalida);
             }
             $("#agregar_editar_licencia").modal("hide");
             buscarLicencia();
@@ -109,10 +108,10 @@ function eliminarlicencia(id_object) {//ELIMINAR USUARIO
     Swal.fire({
         title: "¿Está seguro?",
         text: "¡No podrás revertir esto!",
-        icon: "warning",
+        icon: "question",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
+        confirmButtonColor: "#235B4E",
+        cancelButtonColor: "#6c757d",
         confirmButtonText: "Si, eliminar",
         cancelButtonText: "Cancelar"
       }).then((result) => {
@@ -122,9 +121,9 @@ function eliminarlicencia(id_object) {//ELIMINAR USUARIO
             },
             function (data) {
                 if (data == 'delete'){
-                    mensajeExito('Licencia eliminada con éxito')
+                    notyf.success('Licencia eliminada con éxito')
                 } else {
-                    mensajeError(data);
+                    notyf.error(mensajeSalida);
                 }
                 buscarLicencia();
             }
